@@ -1,9 +1,14 @@
+#include <vector>
+#include <iostream>
 
 class Bezier{
 
     public:
-    double quadraticBezier(double p0, double p1, double p2, double t);
+    vector<double, double> getPoint2D();
+    vector<double, double, double> getPoint3D();
 
     private:
+
+    
 
 };
