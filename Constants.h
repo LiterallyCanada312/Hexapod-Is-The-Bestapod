@@ -1,0 +1,6 @@
+#define FEMUR_LENGTH 10.0
+#define COXA_LENGTH  10.0
+#define TIBIA_LENGTH 10.0
+
+#define HEX_WIDTH
+#define HEX_INNER_DISTANCE
