@@ -1,7 +1,10 @@
 #pragma once
 #include "InverseKinematics.h"
 #include "Constants.h"
+#include "Bezier.h"
+#include "Vector.h"
 #include <Math.h>
+
 
 using namespace std;
 
