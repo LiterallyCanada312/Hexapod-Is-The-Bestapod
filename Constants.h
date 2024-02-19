@@ -18,9 +18,9 @@
 #define SERVO_18_PIN 18
 
 
-#define FEMUR_LENGTH 10.0
-#define COXA_LENGTH  10.0
-#define TIBIA_LENGTH 10.0
+#define FEMUR_LENGTH 3.0
+#define COXA_LENGTH  2.272638
+#define TIBIA_LENGTH 6
 
 #define HEX_WIDTH
 #define HEX_INNER_DISTANCE
