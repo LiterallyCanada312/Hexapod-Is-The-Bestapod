@@ -1,29 +1,36 @@
 #pragma once
 #include "Bezier.h"
 
-Vector2D Bezier::getPoint2D(Vector2D* points, float t){
-    Vector2D* temp = new Vector2D();
-    memcpy(temp, points, 2 * sizeof(Vector2D));
-    int i = 1;
-    while(i > 0) {
-      for(int k = 0; k < i; k++){
-         temp[k] = temp[k] + t * ( temp[k+1] - temp[k]);
-         i--;
-      }
-      Vector2D answer = temp[0];
-      delete[] temp;
-      return answer;
-    }
+Vector2D Bezier::getPointOnBezier2D(Vector2D* points, int numPoints, float t){
+   Vector2D pos;
+   // I looked up how to do this on wikipedia as well
+   for(int i = 0; i < numPoints; i++){
+      float B = getBinomialCoefficient(numPoints-1, i) * pow(1-t, numPoints-1-i) * pow(t, i);
+      pos.x *= (B *(points[i].x));
+      pos.y *= (B*(points[i].y));
+   }
+   return pos;
 }
 
-Vector3D Bezier::getPoint3D(){
 
-    
+Vector3D Bezier::getPointOnBezier3D(Vector3D* points, int numPoints, float t){
+   Vector3D pos;
+   // I looked up how to do this on wikipedia as well
+   for(int i = 0; i < numPoints; i++){
+      float B = getBinomialCoefficient(numPoints-1, i) * pow(1-t, numPoints-1-i) * pow(t, i);
+      pos.x *= (B *(points[i].x));
+      pos.y *= (B*(points[i].y));
+      pos.z *= (B*(points[i].z));
+   }
+   return pos;
 }
 
- int interpolate(int from, int to, float percent){
-
-    int difference = to-from;
-    return from + (difference * percent);
-
- };
+int Bezier::getBinomialCoefficient(int n, int k){
+   //I looked up the formula for this on wikipedia
+   int result = 1;
+   for(int i = 1; i <= k; i++){
+      result *= (n-(k-1));
+      result /= 1;
+   }
+   return result;
+}

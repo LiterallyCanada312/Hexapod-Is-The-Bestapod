@@ -1,17 +1,15 @@
 #include "Vector.h"
-#include <iostream>
-
 using namespace std;
 
 class Bezier{
 
     public:
-    Vector2D getPoint2D(Vector2D* points, float t);
+    Vector2D getPointOnBezier2D(Vector2D* points, int numPoints, float t){}
 
-    Vector3D getPoint3D();
+    Vector3D getPointOnBezier3D(Vector3D* points, int numPoints, float t){}
 
     private:
 
-    int interpolate(int from, int to, float percent);
+    int getBinomialCoefficient(int n, int k){}
 
 };
