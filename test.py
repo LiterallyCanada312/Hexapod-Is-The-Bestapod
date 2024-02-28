@@ -7,64 +7,6 @@ FEMUR_LENGTH = 3.0
 COXA_LENGTH = 2.272638
 TIBIA_LENGTH = 6.0
 
-class Vector2D:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def __add__(self, other):
-        return Vector2D(self.x + other.x, self.y + other.y)
-
-    def __sub__(self, other):
-        return Vector2D(self.x - other.x, self.y - other.y)
-
-    def __mul__(self, scalar):
-        return Vector2D(self.x * scalar, self.y * scalar)
-
-class Vector3D:
-    def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
-
-    def __add__(self, other):
-        return Vector3D(self.x + other.x, self.y + other.y, self.z + other.z)
-
-    def __sub__(self, other):
-        return Vector2D(self.x - other.x, self.y - other.y, self.z - other.z)
-
-    def __mul__(self, scalar):
-        return Vector3D(self.x * scalar.x, self.y * scalar.y, self.z * scalar.z)  
-
-
-def getPointOnBezier2D(points, numPoints, t):
-    pos = Vector.Vector2D(0, 0)  # Assuming Vector2D class is already defined
-# I looked up how to do this on wikipedia as well
-    for i in range(numPoints):
-        B = Bezier.getBinomialCoefficient(numPoints-1, i) * (1-t)**(numPoints-1-i) * t**i
-        pos.x += B * points[i].x
-        pos.y += B * points[i].y
-    return pos
-
-@staticmethod
-def getPointOnBezier3D(points, numPoints, t):
-    pos = Vector.Vector3D(0, 0, 0)  # Assuming Vector3D class is already defined
-    # I looked up how to do this on wikipedia as well
-    for i in range(numPoints):
-        B = Bezier.getBinomialCoefficient(numPoints-1, i) * (1-t)**(numPoints-1-i) * t**i
-        pos.x += B * points[i].x
-        pos.y += B * points[i].y
-        pos.z += B * points[i].z
-    return pos
-
-def getBinomialCoefficient(n, k):
-        # I looked up the formula for this on wikipedia
-    result = 1
-    for i in range(1, k+1):
-        result *= (n-(k-1))
-        result //= i
-    return result
-
 def constrain(val, min_val, max_val):
 
     if val < min_val: return min_val
@@ -85,6 +27,7 @@ def cartesian_move(X,Y,Z):
     s2.value(90-J2)
     print(J3)
     s3.value(J3)
+
 
 walkCoords = [
             [-2, 8, 00.0],
