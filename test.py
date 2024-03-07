@@ -1,4 +1,5 @@
 from servo import Servo, servo2040
+from Init import init
 
 import math
 import time
@@ -17,7 +18,7 @@ def cartesian_move(X,Y,Z, m1, m2, m3):
     Y+=7.5 #offset Y
     Z-= 5.5 #offset Z
     J1 = math.atan(X/Y) * (180 / math.pi)
-    H = math.sqrt((Y * Y) + (X * X));
+    H = math.sqrt((Y * Y) + (X * X))
     L = math.sqrt((H * H) + (Z * Z));
     J3 = 360 - math.acos(constrain((((FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH) - (L * L))   /   (-2 * FEMUR_LENGTH * TIBIA_LENGTH)   ), -1, 1))*(180 / math.pi)
     B = math.acos(constrain((((L * L) + (FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH))   /   (2 * L * FEMUR_LENGTH)   ), -1, 1)) * (180 / math.pi)
@@ -34,7 +35,6 @@ def moveTo(leg, target_vec3):
     distance = math.sqrt(math.pow((target_vec3.x),2) + math.pow((target_vec3.y),2) + math.pow((target_vec3.z), 2))
     if distance > FEMUR_LENGTH+COXA_LENGTH+TIBIA_LENGTH:
         return
-    
     
 
 walkCoords = [
@@ -99,6 +99,8 @@ legs = [
     [s13,s14,s15],
     [s16,s17,s18]
 ]
+
+init()
 
 #
 #while True:
