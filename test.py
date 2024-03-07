@@ -19,7 +19,7 @@ def cartesian_move(X,Y,Z, m1, m2, m3):
     Z-= 5.5 #offset Z
     J1 = math.atan(X/Y) * (180 / math.pi)
     H = math.sqrt((Y * Y) + (X * X))
-    L = math.sqrt((H * H) + (Z * Z));
+    L = math.sqrt((H * H) + (Z * Z))
     J3 = 360 - math.acos(constrain((((FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH) - (L * L))   /   (-2 * FEMUR_LENGTH * TIBIA_LENGTH)   ), -1, 1))*(180 / math.pi)
     B = math.acos(constrain((((L * L) + (FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH))   /   (2 * L * FEMUR_LENGTH)   ), -1, 1)) * (180 / math.pi)
     A = math.atan(Z / H) * (180 / math.pi) # BECAUSE Z REST IS NEGATIVE, THIS RETURNS A NEGATIVE VALUE
@@ -36,6 +36,25 @@ def moveTo(leg, target_vec3):
     if distance > FEMUR_LENGTH+COXA_LENGTH+TIBIA_LENGTH:
         return
     
+    swtich(leg):
+        case 0:
+            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s1, s2, s3)
+            break
+        case 1:
+            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s4, s5, s6)
+            break
+        case 2: 
+            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s7, s8, s9)
+            break
+        case 3:
+            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s10, s11, s12)
+            break
+        case 4:
+            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s13, s14, s15)
+            break
+        case 5:
+            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s16. s17, s18)
+            break
 
 walkCoords = [
             [-2, 8, 00.0],
@@ -91,7 +110,6 @@ s17.enable()
 s18.enable()
 
 legs = [
-
     [s1,s2,s3],
     [s4,s5,s6],
     [s7,s8,s9],

@@ -1,7 +1,7 @@
 import Vector
 
 class Bezier:
-    @staticmethod
+
     def getPointOnBezier2D(points, numPoints, t):
         pos = Vector.Vector2D(0, 0)  # Assuming Vector2D class is already defined
         # I looked up how to do this on wikipedia as well
@@ -11,7 +11,6 @@ class Bezier:
             pos.y += B * points[i].y
         return pos
 
-    @staticmethod
     def getPointOnBezier3D(points, numPoints, t):
         pos = Vector.Vector3D(0, 0, 0)  # Assuming Vector3D class is already defined
         # I looked up how to do this on wikipedia as well
@@ -22,7 +21,7 @@ class Bezier:
             pos.z += B * points[i].z
         return pos
 
-    @staticmethod
+ 
     def getBinomialCoefficient(n, k):
         # I looked up the formula for this on wikipedia
         result = 1
