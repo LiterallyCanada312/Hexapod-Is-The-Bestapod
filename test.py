@@ -53,7 +53,7 @@ def moveTo(leg, target_vec3):
             cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s13, s14, s15)
             break
         case 5:
-            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s16. s17, s18)
+            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s16, s17, s18)
             break
 
 walkCoords = [
