@@ -1,5 +1,5 @@
 from servo import Servo, servo2040
-from Init import init
+import Init
 
 import math
 import time
@@ -36,25 +36,18 @@ def moveTo(leg, target_vec3):
     if distance > FEMUR_LENGTH+COXA_LENGTH+TIBIA_LENGTH:
         return
     
-    swtich(leg):
-        case 0:
-            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s1, s2, s3)
-            break
-        case 1:
-            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s4, s5, s6)
-            break
-        case 2: 
-            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s7, s8, s9)
-            break
-        case 3:
-            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s10, s11, s12)
-            break
-        case 4:
-            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s13, s14, s15)
-            break
-        case 5:
-            cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s16, s17, s18)
-            break
+    if leg == 0:
+        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s1, s2, s3)      
+    if leg == 1:
+        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s4, s5, s6)
+    if leg == 2: 
+        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s7, s8, s9)
+    if leg == 3:
+        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s10, s11, s12)
+    if leg == 4:
+        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s13, s14, s1)
+    if leg == 5:
+        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s16, s17, s18)
 
 walkCoords = [
             [-2, 8, 00.0],
@@ -74,21 +67,21 @@ walkCoords = [
 s1 = Servo(servo2040.SERVO_1)
 s2 = Servo(servo2040.SERVO_2)
 s3 = Servo(servo2040.SERVO_3)
-s4 = Servo(servo2040.SERVO_1)
-s5 = Servo(servo2040.SERVO_2)
-s6 = Servo(servo2040.SERVO_3)
-s7 = Servo(servo2040.SERVO_1)
-s8 = Servo(servo2040.SERVO_2)
-s9 = Servo(servo2040.SERVO_3)
-s10 = Servo(servo2040.SERVO_1)
-s11 = Servo(servo2040.SERVO_2)
-s12 = Servo(servo2040.SERVO_3)
-s13 = Servo(servo2040.SERVO_1)
-s14 = Servo(servo2040.SERVO_2)
-s15 = Servo(servo2040.SERVO_3)
-s16 = Servo(servo2040.SERVO_1)
-s17 = Servo(servo2040.SERVO_2)
-s18 = Servo(servo2040.SERVO_3)
+s4 = Servo(servo2040.SERVO_4)
+s5 = Servo(servo2040.SERVO_5)
+s6 = Servo(servo2040.SERVO_6)
+s7 = Servo(servo2040.SERVO_7)
+s8 = Servo(servo2040.SERVO_8)
+s9 = Servo(servo2040.SERVO_9)
+s10 = Servo(servo2040.SERVO_10)
+s11 = Servo(servo2040.SERVO_11)
+s12 = Servo(servo2040.SERVO_12)
+s13 = Servo(servo2040.SERVO_13)
+s14 = Servo(servo2040.SERVO_14)
+s15 = Servo(servo2040.SERVO_15)
+s16 = Servo(servo2040.SERVO_16)
+s17 = Servo(servo2040.SERVO_17)
+s18 = Servo(servo2040.SERVO_18)
 
 s1.enable()
 s2.enable()

@@ -1,5 +1,4 @@
 from servo import Servo, servo2040
-from test import legs, moveTo
 from Vector import Vector3D
 import Bezier
 
