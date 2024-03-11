@@ -17,6 +17,9 @@ class Leg:
         self.m3 = m3
         self.inverted = inverted
     
+    def isInverted():
+        return self.inverted
+
     def cartesian_move(X,Y,Z, m1, m2, m3):
         Y+=7.5 #offset Y
         Z-= 5.5 #offset Z
@@ -27,9 +30,13 @@ class Leg:
         B = math.acos(constrain((((L * L) + (FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH))   /   (2 * L * FEMUR_LENGTH)   ), -1, 1)) * (180 / math.pi)
         A = math.atan(Z / H) * (180 / math.pi) # BECAUSE Z REST IS NEGATIVE, THIS RETURNS A NEGATIVE VALUE
         J2 = (B + A)  # BECAUSE 'A' IS NEGATIVE AT REST WE NEED TO INVERT '-' TO '+'
-        self.m1.value(30- J1)
+        
+        if(isInverted):
+            self.m1.value(180- J1)
+        else:
+            self.m1.value(90- J1)
         self.m2.value(90-J2)
-        print(J3)
+        #print(J3)
         self.m3.value(J3)
     
     def moveTo(target_vec3):
