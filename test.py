@@ -1,11 +1,11 @@
 from servo import Servo, servo2040
 import Init
 import Leg
-import Util
+import Util 
+import Vector
 
 import math
 import time
-
 
 s1 = Servo(servo2040.SERVO_1)
 s2 = Servo(servo2040.SERVO_2)
@@ -45,12 +45,12 @@ s16.enable()
 s17.enable()
 s18.enable()
 
-l1 = Leg.Leg(s1, s2, s3, false)
-l2 = Leg.Leg(s4, s5, s6, true)
-l3 = Leg.Leg(s7, s8, s9, false)
-l4 = Leg.Leg(s10, s11, s12, false)
-l5 = Leg.Leg(s13, s14, s15, true)
-l6 = Leg.Leg(s16, s17, s18, false)
+l1 = Leg.Leg(s1, s2, s3, False)
+l2 = Leg.Leg(s4, s5, s6, True)
+l3 = Leg.Leg(s7, s8, s9, False)
+l4 = Leg.Leg(s10, s11, s12, False)
+l5 = Leg.Leg(s13, s14, s15, True)
+l6 = Leg.Leg(s16, s17, s18, False)
 
 
 walkCoords = [
@@ -68,12 +68,34 @@ walkCoords = [
             [0.0, 10, 00.0],
         ]
 
-def run_tripod_gait():
-
 def init():
-    l1.moveTo()
-    l2.moveTo()
-    l3.moveTo()
-    l4.moveTo()
-    l5.moveTo()
-    l6.moveTo()
+    l1.moveTo(Vector.Vector3D(-2, 8, 00.0))
+    l2.moveTo(Vector.Vector3D(-2, 8, 00.0))
+    l3.moveTo(Vector.Vector3D(-2, 8, 00.0))
+    l4.moveTo(Vector.Vector3D(-2, 8, 00.0))
+    l5.moveTo(Vector.Vector3D(-2, 8, 00.0))
+    l6.moveTo(Vector.Vector3D(-2, 8, 00.0))
+
+init()
+
+isFinished = False
+stepsA = 0
+stepsB = 6
+
+while True:
+
+    if(stepsA > 11):
+        stepsA = 0
+    if(stepsB > 11):
+        stepsB = 0 
+
+    if(isFinished is False):
+        l1.moveTo(Util.vectorize(walkCoords[stepsA]))
+        l2.moveTo(Util.vectorize(walkCoords[stepsB]))
+        l3.moveTo(Util.vectorize(walkCoords[stepsA]))
+        l4.moveTo(Util.vectorize(walkCoords[stepsB]))
+        l5.moveTo(Util.vectorize(walkCoords[stepsA]))
+        l6.moveTo(Util.vectorize(walkCoords[stepsB]))
+
+    stepsA += 1
+    stepsB += 1

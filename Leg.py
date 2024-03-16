@@ -5,20 +5,17 @@ import Vector
 import Bezier
 from Util import constrain
 
-class Leg:
+FEMUR_LENGTH = 3.0
+COXA_LENGTH = 2.272638
+TIBIA_LENGTH = 6.0
 
-    FEMUR_LENGTH = 3.0
-    COXA_LENGTH = 2.272638
-    TIBIA_LENGTH = 6.0
+class Leg:
 
     def __init__(self, m1, m2, m3, inverted):
         self.m1 = m1
         self.m2 = m2
         self.m3 = m3
         self.inverted = inverted
-    
-    def isInverted():
-        return self.inverted
 
     def cartesian_move(X,Y,Z, m1, m2, m3):
         Y+=7.5 #offset Y
@@ -31,7 +28,7 @@ class Leg:
         A = math.atan(Z / H) * (180 / math.pi) # BECAUSE Z REST IS NEGATIVE, THIS RETURNS A NEGATIVE VALUE
         J2 = (B + A)  # BECAUSE 'A' IS NEGATIVE AT REST WE NEED TO INVERT '-' TO '+'
         
-        if(isInverted):
+        if(self.inverted):
             self.m1.value(180- J1)
         else:
             self.m1.value(90- J1)
@@ -45,4 +42,4 @@ class Leg:
         if distance > FEMUR_LENGTH+COXA_LENGTH+TIBIA_LENGTH:
             return
         
-        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, self.m1, self.m2, self.m3)
+        self.cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, self.m1, self.m2, self.m3)
