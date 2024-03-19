@@ -1,57 +1,10 @@
 from servo import Servo, servo2040
-import Init
 import Leg
 import Util 
 import Vector
 
 import math
 import time
-import Vector
-
-FEMUR_LENGTH = 3.0
-COXA_LENGTH = 2.272638
-TIBIA_LENGTH = 6.0
-
-def constrain(val, min_val, max_val):
-
-    if val < min_val: return min_val
-    if val > max_val: return max_val
-    return val
-
-def cartesian_move(X,Y,Z, m1, m2, m3):
-    Y+=7.5 #offset Y
-    Z-= 5.5 #offset Z
-    J1 = math.atan(X/Y) * (180 / math.pi)
-    H = math.sqrt((Y * Y) + (X * X))
-    L = math.sqrt((H * H) + (Z * Z))
-    J3 = 360 - math.acos(constrain((((FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH) - (L * L))   /   (-2 * FEMUR_LENGTH * TIBIA_LENGTH)   ), -1, 1))*(180 / math.pi)
-    B = math.acos(constrain((((L * L) + (FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH))   /   (2 * L * FEMUR_LENGTH)   ), -1, 1)) * (180 / math.pi)
-    A = math.atan(Z / H) * (180 / math.pi) # BECAUSE Z REST IS NEGATIVE, THIS RETURNS A NEGATIVE VALUE
-    J2 = (B + A)  # BECAUSE 'A' IS NEGATIVE AT REST WE NEED TO INVERT '-' TO '+'
-    m1.value(30- J1)
-    m2.value(90-J2)
-    print(J3)
-    m3.value(J3)
-
-def moveTo(leg, target_vec3):
-    curr_leg = legs[leg]
-
-    distance = math.sqrt(math.pow((target_vec3.x),2) + math.pow((target_vec3.y),2) + math.pow((target_vec3.z), 2))
-    if distance > FEMUR_LENGTH+COXA_LENGTH+TIBIA_LENGTH:
-        return
-    
-    if leg == 0:
-        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s1, s2, s3)      
-    if leg == 1:
-        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s4, s5, s6)
-    if leg == 2: 
-        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s7, s8, s9)
-    if leg == 3:
-        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s10, s11, s12)
-    if leg == 4:
-        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s13, s14, s1)
-    if leg == 5:
-        cartesian_move(target_vec3.x, target_vec3.y, target_vec3.z, s16, s17, s18)
 
 walkCoords = [
             [-2, 8, 00.0],
@@ -106,22 +59,28 @@ s16.enable()
 s17.enable()
 s18.enable()
 
-legs = [
-    [s1,s2,s3],
-    [s4,s5,s6],
-    [s7,s8,s9],
-    [s10,s11,s12],
-    [s13,s14,s15],
-    [s16,s17,s18]
-]
 
-init()
+l1 = Leg.leg(s1, s2, s3)
+l2 = Leg.leg(s4, s5, s6)
+l3 = Leg.leg(s7, s8, s9)
+l4 = Leg.leg(s10, s11, s12)
+l5 = Leg.leg(s13, s14, s15)
+l6 = Leg.leg(s16, s17, s18)
 
-#
-#while True:
-#    for coords in walkCoords:
-#        cartesian_move(coords[0], coords[1], coords[2])
-#        time.sleep(0.05)
-    
-        
+Legs = []
+Legs.append(l1)
+Legs.append(l2)
+Legs.append(l3)
+Legs.append(l4)
+Legs.append(l5)
+Legs.append(l6)
+
+legsInitialized = 0
+for leg in Legs:
+    leg.standFromRest()
+    print(legsInitialized + " stood")
+    legsInitialized += 1
+
+time.sleep(5)
+
         
