@@ -19,10 +19,10 @@ class Bezier:
             pos.x += B * points[i].x
             pos.y += B * points[i].y
             pos.z += B * points[i].z
-        return pos
+        return pos  
 
- 
-    def getBinomialCoefficient(n, k):
+    
+    def getBinomialCoefficient(n, k):       
         # I looked up the formula for this on wikipedia
         result = 1
         for i in range(1, k+1):
