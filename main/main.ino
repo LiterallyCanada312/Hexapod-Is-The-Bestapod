@@ -1,7 +1,7 @@
 #include <Servo.h>
 #include <nRF24L01>
 #include <SPI.h>
-
+  
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
 
@@ -31,7 +31,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+    
 }
 
 void setAngle(int leg, Vector3 vec){
@@ -49,6 +49,10 @@ void setAngle(int leg, Vector3 vec){
      B = math.acos(constrain((((L * L) + (FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH))   /   (2 * L * FEMUR_LENGTH)   ), -1, 1)) * (180 / math.pi);
      A = math.atan(Z / H) * (180 / pi);
      J2 = (B + A);
+
+    switch(leg):
+      case 1:
+        
 
 
 }
