@@ -1,3 +1,6 @@
+
+// I stole this from Aecert
+
 class Vector2 {
 public:
   float x;
