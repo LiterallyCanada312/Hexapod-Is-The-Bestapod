@@ -50,7 +50,7 @@ void setLegToVector(int leg, Vector3 vec){
     float H = math.sqrt((Y * Y) + (X * X));
     float L = math.sqrt((H * H) + (Z * Z));
     float J3 = 360 - math.acos(constrain((((FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH) - (L * L))   /   (-2 * FEMUR_LENGTH * TIBIA_LENGTH)   ), -1, 1))*(180 / pi);
-    float B = math.acos(constrain((((L * L) + (FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH))   /   (2 * L * FEMUR_LENGTH)   ), -1, 1)) * (180 / math.pi);
+    float B = math.acos(constrain((((L * L) + (FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH))   /   (2 * L * FEMUR_LENGTH)   ), -1, 1)) * (180 / pi);
     float A = math.atan(Z / H) * (180 / pi);
     float J2 = (B + A);
 
@@ -58,17 +58,31 @@ void setLegToVector(int leg, Vector3 vec){
       switch(leg){
 
         case 1:
-
           break;
 
         case 2:
-          break
+          break;
+
+        case 3:
+          break;
+
+        case 4: 
+          break;
+
+        case 5:
+          break;
+
+        case 6:
+          break;
 
       }
     }
-
 }
 
-void setAngles(int leg, float value)
+void setAngles(int leg, float value ){ //value is in degrees
+
+  
+
+}
 
 
