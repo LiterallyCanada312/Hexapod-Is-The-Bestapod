@@ -54,35 +54,64 @@ void setLegToVector(int leg, Vector3 vec){
     float A = math.atan(Z / H) * (180 / pi);
     float J2 = (B + A);
 
+    float pulseLength1 = map(J1, 0, 180, SERVOMIN, SERVOMAX);
+    float pulseLength2 = map(J2, 0, 180, SERVOMIN, SERVOMAX);
+    float pulseLength3 = map(J3, 0, 180, SERVOMIN, SERVOMAX);
+
     if(leg != -1){
       switch(leg){
 
         case 1:
+
+          pwm0.setPwm();
+          pwm0.setPwm();
+          pwm0.setPwm();
+
           break;
 
         case 2:
+
+          pwm0.setPwm();
+          pwm0.setPwm();
+          pwm0.setPwm();
+
           break;
 
         case 3:
+
+          pwm0.setPwm();
+          pwm0.setPwm();
+          pwm0.setPwm();
+
           break;
 
         case 4: 
+
+          pwm1.setPwm();
+          pwm1.setPwm();
+          pwm1.setPwm();
+
           break;
 
         case 5:
+
+          pwm1.setPwm();
+          pwm1.setPwm();
+          pwm1.setPwm();
+
           break;
 
         case 6:
+
+          pwm1.setPwm();
+          pwm1.setPwm();
+          pwm1.setPwm();
+
           break;
 
       }
     }
 }
 
-void setAngles(int leg, float value ){ //value is in degrees
-
-  
-
-}
 
 
