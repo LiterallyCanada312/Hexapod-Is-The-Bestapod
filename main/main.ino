@@ -60,52 +60,54 @@ void setLegToVector(int leg, Vector3 vec){
 
     if(leg != -1){
       switch(leg){
+        
+        // TODO: SET UP PROPER LEG GROUPING ON THE PCB
 
         case 1:
 
-          pwm0.setPwm();
-          pwm0.setPwm();
-          pwm0.setPwm();
+          pwm0.setPwm(0, 0 , pulseLength1);
+          pwm0.setPwm(1, 0 , pulseLength2);
+          pwm0.setPwm(2, 0, pulseLength3);
 
           break;
 
         case 2:
 
-          pwm0.setPwm();
-          pwm0.setPwm();
-          pwm0.setPwm();
+          pwm0.setPwm(3, 0 , pulseLength1);
+          pwm0.setPwm(4, 0 , pulseLength2);
+          pwm0.setPwm(5, 0, pulseLength3);
 
           break;
 
         case 3:
 
-          pwm0.setPwm();
-          pwm0.setPwm();
-          pwm0.setPwm();
+          pwm0.setPwm(6, 0 , pulseLength1);
+          pwm0.setPwm(7, 0 , pulseLength2);
+          pwm0.setPwm(8, 0, pulseLength3);
 
           break;
 
         case 4: 
 
-          pwm1.setPwm();
-          pwm1.setPwm();
-          pwm1.setPwm();
+          pwm1.setPwm(9, 0 , pulseLength1);
+          pwm1.setPwm(10, 0 , pulseLength2);
+          pwm1.setPwm(11, 0, pulseLength3);
 
           break;
 
         case 5:
 
-          pwm1.setPwm();
-          pwm1.setPwm();
-          pwm1.setPwm();
+          pwm1.setPwm(12, 0 , pulseLength1);
+          pwm1.setPwm(13, 0 , pulseLength2);
+          pwm1.setPwm(14, 0, pulseLength3);
 
           break;
 
         case 6:
 
-          pwm1.setPwm();
-          pwm1.setPwm();
-          pwm1.setPwm();
+          pwm1.setPwm(15, 0 , pulseLength1);
+          pwm1.setPwm(16, 0 , pulseLength2);
+          pwm1.setPwm(17, 0, pulseLength3);
 
           break;
 
