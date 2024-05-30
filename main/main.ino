@@ -12,8 +12,8 @@
 
 #define pi 3.14159
 
-#define SERVOMIN //tbd 
-#define SERVOMAX //tbd
+#define SERVOMIN 1000//tbd 
+#define SERVOMAX 2000//tbd
 
 Adafruit_PWMServoDriver pwm0 = Adafruit_PWMServoDriver(0x40);
 Adafruit_PWMServoDriver pwm1 = Adafruit_PWMServoDriver(0x41);

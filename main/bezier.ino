@@ -18,7 +18,7 @@ Vector3 getPointOnBezier(Vector3* points[], int n, int t){
         target_pos.y += b*points[i].y;
         target_pos.z += b*points[i].z;
     }
-
+    
     return target_pos;
 
 }
