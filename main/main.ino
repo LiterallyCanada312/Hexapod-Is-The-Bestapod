@@ -1,5 +1,6 @@
 #include <Servo.h>
 #include <SPI.h>
+#include "init.ino"
 
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
@@ -12,8 +13,8 @@
 
 #define pi 3.14159
 
-#define SERVOMIN 1000//tbd 
-#define SERVOMAX 2000//tbd
+#define SERVOMIN 1000 
+#define SERVOMAX 2000
 
 Adafruit_PWMServoDriver pwm0 = Adafruit_PWMServoDriver(0x40);
 Adafruit_PWMServoDriver pwm1 = Adafruit_PWMServoDriver(0x41);
@@ -30,6 +31,8 @@ void setup() {
   pwm1.begin();
   pwm1.setOscillatorFrequency(25000000);
   pwm1.setPWMFreq(50);
+
+  calibStand();
 
 }
 
@@ -109,6 +112,9 @@ void setLegToVector(int leg, Vector3 vec){
           pwm1.setPwm(16, 0 , pulseLength2);
           pwm1.setPwm(17, 0, pulseLength3);
 
+          break;
+
+        default:
           break;
 
       }

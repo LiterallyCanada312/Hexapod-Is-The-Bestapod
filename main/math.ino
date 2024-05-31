@@ -23,16 +23,3 @@ float[] mulMat(float mat1[][], float mat2[][]){
     return rslt;
 
 }
-
-float[] getRotationMat(float theta){ // theta : change in orientation
-
-
-
-}
-
-void applyTransform3D(Vector3* vec, float[][] transformMat){
-    
-    
-
-
-}
