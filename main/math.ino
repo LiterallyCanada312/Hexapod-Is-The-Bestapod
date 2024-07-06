@@ -1,5 +1,3 @@
-#include "vector.ino"
-
 
 float[] mulMat(float mat1[][], float mat2[][]){
     
