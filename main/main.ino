@@ -32,8 +32,6 @@ void setup() {
   pwm1.setOscillatorFrequency(25000000);
   pwm1.setPWMFreq(50);
 
-  calibStand();
-
 }
 
 void loop() {
@@ -49,20 +47,17 @@ void setLegToVector(int leg, Vector3 vec){
     Y += Y_OFFSET;
     Z += Z_OFFSET;
 
-    float lL = sqrt(pow(X,2) + pow(Z,2)); // Leg Length
-    float hF = sqrt(pow((lL - COXA_LENGTH),2) + pow(y,2)); // length of line that forms triangle with tibia and femur
-    float A1 = atan2((lL - COXA_LENGTH)/Y);
-    float A2 = acos((pow(TIBIA_LENGTH, 2) - pow(FEMUR_LENGTH, 2) - pow(HF, 2))/(-2*FEMUR_LENGTH*hF));
+    float J1 = math.atan(X/Y) * (180 / pi);
+    float H = math.sqrt((Y * Y) + (X * X));
+    float L = math.sqrt((H * H) + (Z * Z));
+    float J3 = 360 - math.acos(constrain((((FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH) - (L * L))   /   (-2 * FEMUR_LENGTH * TIBIA_LENGTH)   ), -1, 1))*(180 / pi);
+    float B = math.acos(constrain((((L * L) + (FEMUR_LENGTH * FEMUR_LENGTH) - (TIBIA_LENGTH * TIBIA_LENGTH))   /   (2 * L * FEMUR_LENGTH)   ), -1, 1)) * (180 / pi);
+    float A = math.atan(Z / H) * (180 / pi);
+    float J2 = (B + A);
 
-    float femurAngle = 90 - (A1 + A2);
-    float B1 = acos((pow(HF,2)-pow(TIBIA_LENGTH,2)-pow(FEMUR_LENGTH,2))/(-2*FEMUR_LENGTH*TIBIA_LENGTH));
-
-    float tibiaAngle = (90 - B1);
-    float coxaAngle = atan2(Z/X);
-
-    float pulseLength1 = map(coxaAngle, 0, 180, SERVOMIN, SERVOMAX);
-    float pulseLength2 = map(femurAngle, 0, 180, SERVOMIN, SERVOMAX);
-    float pulseLength3 = map(tibiaAngle, 0, 180, SERVOMIN, SERVOMAX);
+    float pulseLength1 = map(J1, 0, 180, SERVOMIN, SERVOMAX);
+    float pulseLength2 = map(J2, 0, 180, SERVOMIN, SERVOMAX);
+    float pulseLength3 = map(J3, 0, 180, SERVOMIN, SERVOMAX);
 
     if(leg != -1){
       switch(leg){
@@ -121,7 +116,7 @@ void setLegToVector(int leg, Vector3 vec){
           break;
 
       }
-    }
+    }s
 }
 
 
